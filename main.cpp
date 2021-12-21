@@ -180,7 +180,7 @@ void nonMaxSupression( vector<float> &output, vector<Object> &results,float conf
 
 }
 
-void draw_objects(Mat& bgr, const vector<Object>& objects, const string &savePath)
+void drawObjects(Mat& bgr, const vector<Object>& objects, const string &savePath)
 {
     static const char* class_names[] = {
         "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
@@ -274,7 +274,7 @@ int main(int argc, char** argv)
 
         string savePath=argv[2];
         savePath=savePath + "/"+p.substr(p.find("/")+1);
-        draw_objects(drawImage,objects,savePath);
+        drawObjects(drawImage,objects,savePath);
     }
 
     return 0;
