@@ -44,11 +44,13 @@ Use TensorRT to speed up your model, you need parse it to TensorRT .engine forma
 
 ```bash
 #default yolov5s as example
+
 #generate engine 
 ./build/tiny-tensorrt/tinyexec --onnx yolov5s.onnx --model yolov5s.engine
 
 #inference
-./build/yolov5_tinytrt images/ results/
+#usage:./yolov5_tinytrt <onnx_model> <engine_model> <input_folder> <output_folder>
+./build/yolov5_tinytrt yolov5s.onnx  yolov5s.engine  images/ results/
 ```
 ![results/000000007816.jpg](results/000000007816.jpg)
 ## Reference
