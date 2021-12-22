@@ -241,15 +241,15 @@ void drawObjects(Mat& bgr, const vector<Object>& objects, const string &savePath
 
 int main(int argc, char** argv)
 {
-    if (argc < 3)
+    if (argc < 5)
     {
-        cout << "usage:" << "./yolov5_tinytrt <input_folder> <output_folder>" << endl;
+        cout << "usage:" << "./yolov5_tinytrt <onnx_model> <engine_model> <input_folder> <output_folder> " << endl;
         return 1;
     }
     Trt trt;
-    trt.CreateEngine("yolov5s.onnx","yolov5s.engine",1,0);
+    trt.CreateEngine(argv[1],argv[2],1,0);
 
-    vector<string> imagePaths=readFolder(argv[1]);
+    vector<string> imagePaths=readFolder(argv[3]);
     for (auto p:imagePaths)
     {
         cout <<"Image:" <<p<< endl;
@@ -272,7 +272,7 @@ int main(int argc, char** argv)
         vector<Object> objects;
         nonMaxSupression(output,objects,CONF_THRESH,IOU_THRESH);
 
-        string savePath=argv[2];
+        string savePath=argv[4];
         savePath=savePath + "/"+p.substr(p.find("/")+1);
         drawObjects(drawImage,objects,savePath);
     }
