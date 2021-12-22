@@ -1,5 +1,15 @@
 ## Installation
-Require TensorRT 8+ . Recommend use Nvidia official Docker image: [Torch-Trt.](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
+Require TensorRT 8+ . Recommend use Nvidia official Docker image: [nvcr.io/nvidia/pytorch:**21.11-py3**](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
+
+**Create docker container**
+```
+#this docker image is tested, recommend pull this image
+docker pull nvcr.io/nvidia/pytorch:21.11-py3
+
+#create container
+nvidia-docker run -it --name yolov5_tinytrt nvcr.io/nvidia/pytorch:21.11-py3 /bin/bash
+```
+**Install**
 ```bash
 #clone project and submodule
 git clone --recurse-submodules -j8 https://github.com/bot66/yolov5_tinytrt.git
