@@ -1,3 +1,13 @@
+## Benchmark
+| Models | Device | BatchSize | Mode | Input Shape(HxW) | Pytorch |TensorRT|
+|-|-|:-:|:-:|:-:|:-:|:-:|
+| YOLOV5-X| RTX3070 | 1 | FP32 | 640x640 | 38.0ms | 21.1ms |
+| YOLOV5-L | RTX3070 | 1 | FP32 | 640x640 | 23.3ms | 13.4ms |
+| YOLOV5-M | RTX3070 | 1 | FP32 | 640x640 | 12.0ms | 7.5ms|
+| YOLOV5-S | RTX3070 | 1 | FP32 | 640x640 | 6.3ms | 4.6ms |
+
+
+
 ## Installation
 Require TensorRT 8+ . Recommend use Nvidia official Docker image: [nvcr.io/nvidia/pytorch:**21.11-py3**](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
 
