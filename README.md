@@ -5,10 +5,14 @@
 | YOLOV5-L | RTX3070 | 1 | FP32 | 640x640 | 23.3ms | 13.4ms |
 | YOLOV5-M | RTX3070 | 1 | FP32 | 640x640 | 12.0ms | 7.5ms|
 | YOLOV5-S | RTX3070 | 1 | FP32 | 640x640 | 6.3ms | 4.6ms |
-
+| YOLOV5-X| Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
+| YOLOV5-L | Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
+| YOLOV5-M | Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
+| YOLOV5-S | Jetson Nano | 1 | FP32 | 640x640 | \\ | 6.4ms |
 
 
 ## Installation
+### Build on x86
 Require TensorRT 8+ . Recommend use Nvidia official Docker image: [nvcr.io/nvidia/pytorch:**21.11-py3**](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
 
 **Create docker container**
@@ -19,7 +23,19 @@ docker pull nvcr.io/nvidia/pytorch:21.11-py3
 #create container
 nvidia-docker run -it --name yolov5_tinytrt nvcr.io/nvidia/pytorch:21.11-py3 /bin/bash
 ```
-**Install**
+### Build on ARM(NVIDIA Jetson)
+Recommend pull this docker image [l4t-ml:r32.6.1-py3](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-ml)(OpenCV inside).Make sure your JetPack version support it. My Jetson Nano is **JetPack 4.4**, also can run this docker image. 
+
+**Create docker container**
+```
+#this docker image is tested, recommend pull this image
+docker pull nvcr.io/nvidia/l4t-ml:r32.6.1-py3
+
+#create container
+nvidia-docker run -it --name yolov5_tinytrt nvcr.io/nvidia/l4t-ml:r32.6.1-py3 /bin/bash
+```
+
+### Install
 ```bash
 #clone project and submodule
 git clone --recurse-submodules -j8 https://github.com/bot66/yolov5_tinytrt.git
@@ -49,8 +65,8 @@ Use TensorRT to speed up your model, you need parse it to TensorRT .engine forma
 ./build/tiny-tensorrt/tinyexec --onnx yolov5s.onnx --model yolov5s.engine
 
 #inference
-#usage:./yolov5_tinytrt <onnx_model> <engine_model> <input_folder> <output_folder>
-./build/yolov5_tinytrt yolov5s.onnx  yolov5s.engine  images/ results/
+#usage:./yolov5_tinytrt <engine_model> <input_folder> <output_folder>
+./build/yolov5_tinytrt yolov5s.engine  images/ results/
 ```
 ![results/000000007816.jpg](results/000000007816.jpg)
 ## Reference
