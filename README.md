@@ -5,9 +5,6 @@
 | YOLOV5-L | RTX3070 | 1 | FP32 | 640x640 | 23.3ms | 13.4ms |
 | YOLOV5-M | RTX3070 | 1 | FP32 | 640x640 | 12.0ms | 7.5ms|
 | YOLOV5-S | RTX3070 | 1 | FP32 | 640x640 | 6.3ms | 4.6ms |
-| YOLOV5-X| Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
-| YOLOV5-L | Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
-| YOLOV5-M | Jetson Nano | 1 | FP32 | 640x640 | \\ | \\ |
 | YOLOV5-S | Jetson Nano | 1 | FP32 | 640x640 | \\ | 6.4ms |
 
 
